@@ -92,7 +92,6 @@ public class DBAdministracion {
     // Este método será el que se encargue de buscar un ID pasado por parámetro.
     public boolean buscarID (int id) {
         ResultSet res;
-        int aux;
         try {
             Connection conn = DBConexion.getInstance().conectar();
             statement = conn.prepareStatement("SELECT * FROM usuarios WHERE id = " + id);
