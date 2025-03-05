@@ -48,7 +48,9 @@ public class UsuarioController {
             // En caso de que el email o el nombre se encuentren vacíos, se enviará un código de error.
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("400 BAD REQUEST: Los campos de email y nombre son obligatorios");
         } else {
-            db.ingresarUsuario(u); // Si no hay ningún problema se realizará la inserción del usuario.
+            if(!db.ingresarUsuario(u)) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("500 INTERNAL SERVER ERROR: No se pudo guardar la infromación");
+            } // Si no hay ningún problema se realizará la inserción del usuario.
         }
         // En caso de que el usuario se guarde exitosamente, se enviara un código de éxito.
         return ResponseEntity.status(HttpStatus.CREATED).body("201 CREATED: El usuario se guardó exitosamente");

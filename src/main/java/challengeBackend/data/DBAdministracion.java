@@ -117,7 +117,7 @@ public class DBAdministracion {
 
             res = query.execute("INSERT INTO usuarios VALUES (DEFAULT, '"+u.getNombre()+"', '"+u.getEmail()+"', DEFAULT)");
 
-            if (res) return true;
+            if (!res) return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
